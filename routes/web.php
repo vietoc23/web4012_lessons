@@ -11,12 +11,25 @@
 |
 */
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/{user?}', function($user = null) {
-    dd($user);
+Route::get('users', function () {
+    $users = factory(User::class, 10)->make()->toArray();
+    return view('starter', [
+        'users' => $users
+    ]);
+});
+
+Route::get('posts', function () {
+    $posts = factory(Post::class, 10)->make();
+
+    return view('posts', [
+        'posts' => $posts
+    ]);
 });
