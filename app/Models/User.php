@@ -9,4 +9,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     public $timestamps = false;
+
+    protected $fillable = [
+        'name', 'email', 'birthday', 'password', 'role'
+    ];
 }

@@ -25,17 +25,28 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Birthday</th>
+                            <td><a href="{{ route('users.create') }}" class="btn btn-success">Create</a></td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $user)
                             <tr>
-                                <td>{{ $user['name'] }}</td>
-                                <td>{{ $user['email'] }}</td>
-                                <td>{{ $user['birthday'] }}</td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->birthday }}</td>
+                                <td><a href="{{ url('users/' . $user->id) }}" class="btn btn-success">Details</a></td>
+                                <td><a href="{{ url('users/' . $user->id . '/edit') }}" class="btn btn-primary">Update</a></td>
+                                <td>
+                                    <form action="{{ url('users/' . $user->id . '/delete') }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

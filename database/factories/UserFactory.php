@@ -21,7 +21,6 @@ $factory->define(User::class, function (Faker $faker) {
         'birthday' => $faker->date(),
         'email' => $faker->unique()->safeEmail,
         'password' => $faker->password(5,15),
-        'address' => $faker->address,
         'role' => $faker->numberBetween(0, 1)
     ];
 });
